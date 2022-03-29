@@ -1,0 +1,22 @@
+<div>
+    <button (click)="userLogin='true'">login</button>
+    <button (click)="userLogin='false'">logout</button>
+    
+    <app-user-login  [loggedIn]="userLogin"></app-user-login>
+    <h2>Pick a highlight color</h2>
+    <div>
+        <input type="radio" name="colors" (click)="color='lightgreen'">Green
+        <input type="radio" name="colors" (click)="color='yellow'">Yellow
+        <input type="radio" name="colors" (click)="color='cyan'">Cyan
+    </div>
+    <p [appHighlight]="color">Pick your favorite hero</p>
+  (<label><input type="checkbox" checked (change)="showSad = !showSad">show sad</label>)
+</div>
+<select [(ngModel)]="name">
+    <ng-container *ngFor="let u of users">
+        <ng-container *ngIf="showSad || u.emotional !== 'sad'">
+            <option [ngValue] = "u">{{u.name}} ({{u.emotional}}) </option>
+        </ng-container>       
+    </ng-container>
+</select>
+

@@ -1,0 +1,21 @@
+<div>
+  <label>add user name</label>
+  <input id="user-name" #username>
+  <button type="button" class="add-button" (click)="add(username.value); username.value='' " >Add</button>
+</div>
+<div>
+    <h2>My Heroes</h2>
+    <ul class="heroes">
+        <li *ngFor="let hero of heros">
+          <a routerLink="/details/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+          </a>
+          <button type="button" class="delete" title="delete hero"
+            (click)="delete(hero)">delete</button>
+        </li>
+      </ul>
+</div>
+
+<div *ngIf="selecthero">
+    <app-here-details [hero]="selecthero"></app-here-details>
+</div>
